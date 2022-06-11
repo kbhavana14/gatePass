@@ -109,7 +109,7 @@ app.post('/register', function(request, response) {
                     if (error) throw error;
                     
                 });
-                response.send('entered into db!');
+				response.redirect('/afterreg');
             }		
 			response.end();
 		});
@@ -123,6 +123,11 @@ app.post('/register', function(request, response) {
 app.post('/tlogin', function(request, response) {
 	// Render login template
 	response.sendFile(path.join(__dirname + '/tlogin.html'));
+});
+
+app.get('/afterreg', function(request, response) {
+	// Render login template
+	response.sendFile(path.join(__dirname + '/afterreg.html'));
 });
 
 // http://localhost:3000/tauth
@@ -257,6 +262,7 @@ app.post('/filled', function(request, response) {
 	var section = request.body.section;
 	var phnum = request.body.phnum;
 	var reason = request.body.reason;
+	console.log(date);
 	//response.sendFile(path.join(__dirname + '/filled.ejs'));
 	response.render(__dirname+"/filled.ejs",{roll:roll,name:name,date:date,section:section,phnum:phnum,reason:reason});
 	var details={
@@ -265,6 +271,7 @@ app.post('/filled', function(request, response) {
 		class: section,
 		phnum: phnum,
 		reason: reason,
+		date: date,
 		
 	  }
 	var sql = 'INSERT INTO details1 SET ?';
