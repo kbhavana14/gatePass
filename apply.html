@@ -7,11 +7,26 @@
         <!-- the form awesome library is used to add icons to our form -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
         <!-- include the stylesheet file -->
-        <link href="styles.css" rel="stylesheet" type="text/css">
+        
 	</head>
 	<body>
 		<div class="login">
 			<h1>apply form</h1>
+			<form action="/filled" method="post">
+				<label for="roll">roll</label>
+				<input type="text" name="roll" id="roll"><br><br>
+				<label for="name">NAME</label>
+				<input type="text" name="name" id="name"><br><br>
+				<label for="date">DATE</label>
+				<input type="date" name="date" id="date"><br><br>
+				<label for="section">Section</label>
+				<input type="text" name="section" id="section"><br><br>
+				<label for="phnum">PHONE NUMBER</label>
+				<input type="number" name="phnum" id="phnum"><br><br>
+				<label for="reason">Reason</label>
+				<input type="text" name="reason" id="reason"><br><br>
+				<button type="submit">SUBMIT</button>
+			</form>
 
 			
 		</div>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>how to fetch data from database in node js and display in html</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>  
+<!--   <% if (messages.error) { %>
+  <p style="color:red"><%- messages.error %></p>
+<% } %> -->
+  
+<% if (messages.success) { %>
+    <p class="alert alert-success mt-4"><%- messages.success %></p>
+<% } %>  
+<br>
+<form class="" action="/">
+    <td>
+      <button type="submit" >HOME</button>
+  </form>
+  <table class="table">
+<thead>
+  <tr>
+    <th scope="col">SNO</th>
+    <th scope="col">roll</th>
+    <th scope="col">Name</th>
+    <th scope="col">class</th>
+	  <th scope="col">date</th>
+	  <th scope="col">reason</th>
+	  <th scope="col">status</th>
+	  <th scope="col">phnum</th>
+    <th width="200px">Action</th>
+ 
+  </tr>
+</thead>
+<tbody>
+  <% if(data.length){
+ 
+  for(var i = 0; i< data.length; i++) {%>  
+  <tr>
+    <th scope="row"><%= (i+1) %></th>
+    
+    <td><%= data[i].roll%></td>
+    <td><%= data[i].name%></td>
+	<td><%= data[i].class%></td>
+	<td><%= data[i].date%></td>
+	<td><%= data[i].reason%></td>
+	<td id="status"><%= data[i].status%></td>
+	<td><%= data[i].phnum%></td>
+  <form class="" action="/updategate" method="post">
+    <td>
+      <button type="submit" name="out" value="<%= data[i].auto%>">OUT</button>
+  </form>
+  
+  </tr>
+  <% 
+   
+}
+           
+   }else{ %>
+       <tr>
+          <td colspan="3">No user</td>
+       </tr>
+    <% } %> 
+    
+  
+</tbody>
+</table>
+</body>
+</html>
