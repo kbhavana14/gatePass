@@ -2,7 +2,79 @@
 <html>
 <head>
   <title>TEACHER HOME</title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <style>
+
+body{
+    background:linear-gradient(45deg,#D7E2E9,#AB95B1,#C9BEB5,#F1D05D);
+}
+html{
+    height: 100%;
+}
+    button {
+  margin: 20px;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.home{
+  background-color:#AB95B1;
+   margin-bottom: 30px; 
+   border: 0px;
+
+}
+.home:hover{
+  font: bold;
+}
+
+a{
+    justify-content:left;
+    padding:30px;
+    text-decoration: none;
+    color: #020202;
+    font-size: 18px;
+    margin-top: 60px;
+    border: 0px;
+}
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+/* 1 */
+.btn-1 {
+  color:#fff;
+  background-color: #848484;
+  background: linear-gradient(0deg, #3A3845 0%,#848484 100%);
+  border: none;
+}
+.btn-1:hover {
+   background: rgb(0,3,255);
+background: linear-gradient(0deg,#222222 0%, #000000 100%);
+}
+.btn-2 {
+  background-color: #222222;
+  background: linear-gradient(0deg, #F1D05D 0%, #F1D05D 100%);
+  border: none;
+}
+.btn-2:hover {
+   background: rgb(0,3,255);
+background: linear-gradient(0deg, #F1A222 0%, #F1A222 100%);
+}
+  </style>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -18,20 +90,20 @@
 <br>
 <form class="" action="/">
   <td>
-    <button type="submit" >HOME</button>
+    <a><button type="submit" class="home" >← HOME</button></a>
 </form>
   <table class="table">
 <thead>
   <tr>
     <th scope="col">SNO</th>
-    <th scope="col">roll</th>
-    <th scope="col">Name</th>
-    <th scope="col">class</th>
-	  <th scope="col">date</th>
-	  <th scope="col">reason</th>
-	  <th scope="col">status</th>
-	  <th scope="col">phnum</th>
-    <th width="200px">Action</th>
+    <th scope="col">ROLL</th>
+    <th scope="col">NAME</th>
+    <th scope="col">CLASS</th>
+	  <th scope="col">DATE</th>
+	  <th scope="col">REASON</th>
+	  <th scope="col">STATUS</th>
+	  <th scope="col">PHNUM</th>
+    <th width="200px" style="text-align: center;">ACTION</th>
  
   </tr>
 </thead>
@@ -51,10 +123,10 @@
 	<td><%= data[i].phnum%></td>
   <form class="" action="/update" method="post">
     <td>
-      <button type="submit" name="accepting" value="<%= data[i].auto%>">Submit</button>
+      <button type="submit" name="accepting" value="<%= data[i].auto%>" class="cutom-btn btn-2">ACCEPT</button>
   </form>
   <form class="" action="/tdecline" method="post">
-      <td><button type="submit" name="declining" value="<%= data[i].auto%>">Decline</button></td>
+      <td><button type="submit" name="declining" value="<%= data[i].auto%>" class="cutom-btn btn-1">DECLINE</button></td>
     </form>
   </tr>
   <% 

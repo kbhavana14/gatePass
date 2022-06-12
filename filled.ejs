@@ -4,16 +4,127 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,minimum-scale=1">
 		<title>Login</title>
+		<style>
+			
+body{
+   background: #7a9;
+}
+
+a{
+    justify-content:left;
+    padding:30px;
+    text-decoration: none;
+    color: #020202;
+    font-size: 18px;
+    margin-top: 60px;
+}
+button{
+  background-color: #7a9;
+  border: 0px;
+}
+.required{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: #7a9;
+}
+.container {
+  background-color: white;
+  height: 400px;
+  width: 350px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 10px 10px rgba(#000, 0.05);
+}
+
+
+.circle,
+.circle-border {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.circle {
+  z-index: 1;
+  position: relative;
+  background: white;
+  transform: scale(1);
+  animation: success-anim 700ms ease;
+}
+.circle-border {
+  z-index: 0;
+  position: absolute;
+  background: #8f6;
+  transform: scale(1.1);
+  animation: circle-anim 400ms ease;
+}
+
+@keyframes success-anim {
+  0% {
+    transform: scale(0);
+  }
+  30% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes circle-anim {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.success::before,
+.success::after {
+  content: "";
+  display: block;
+  height: 4px;
+  background: #8f6;
+  position: absolute;
+}
+
+.success::before {
+  width: 17px;
+  top: 58%;
+  left: 23%;
+  transform: rotateZ(50deg);
+}
+
+.success::after {
+  width: 30px;
+  top: 50%;
+  left: 35%;
+  transform: rotateZ(-50deg);
+}
+		</style>
         <!-- the form awesome library is used to add icons to our form -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
         <!-- include the stylesheet file -->
     
 	</head>
 	<body>
-		<h1>SUBMITTED SUCCESSFULLY</h1>
-        <form class="" action="/">
-			<td>
-			  <button type="submit" >HOME</button>
-		  </form>
-	</body>
+    <form class="" action="/">
+      <td>
+        <a><button type="submit" >← HOME</button></a>
+    </form>
+   <div class="required">
+    <div class="container" id="required">
+        <div class="circle-border"></div>
+        <div class="circle">
+            <div class="success"></div>
+          </div>
+        </div>
+    </div>
+    </div>
+  </body>
 </html>

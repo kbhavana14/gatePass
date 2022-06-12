@@ -53,7 +53,7 @@ app.post('/sauth', function(request, response) {
 	// Ensure the input fields exists and are not empty
 	if (username && password) {
 		// Execute SQL query that'll select the account from the database based on the specified username and password
-		connection.query('SELECT * FROM userTable WHERE user = ? AND password = ?', [username, password], function(error, results, fields) {
+		connection.query('SELECT * FROM student WHERE user = ? AND password = ?', [username, password], function(error, results, fields) {
 			// If there is an issue with the query, output the error
 			if (error) throw error;
 			// If the account exists
@@ -88,23 +88,26 @@ app.post('/register', function(request, response) {
 	let username = request.body.username;
 	let password = request.body.password;
     let confirm_password = request.body.confirm_password;
+	
 	// Ensure the input fields exists and are not empty
 	if (username && password && confirm_password) {
+		console.log(username,password);
 		// Execute SQL query that'll select the account from the database based on the specified username and password
-		connection.query('SELECT * FROM userTable WHERE user = ?', [username], function(error, results, fields) {
+		connection.query('SELECT * FROM student WHERE user = ?', [username], function(error, results, fields) {
 			// If there is an issue with the query, output the error
 			if (error) throw error;
 			// If the account exists
 			if (results.length > 0) {
-				response.send('Already Exists!')
+				response.redirect('/alreadyexists');
 			} else if(confirm_password!=password) {
-				response.send('Password & Confirm Password is not Matched');
+				response.redirect('/passnotmatched');
 			}	else {
                 var users={
                     user : request.body.username,
                     password: request.body.password
                   }
-                var sql = 'INSERT INTO userTable SET ?';
+				  
+                var sql = 'INSERT INTO student SET ?';
                 connection.query(sql,users, function(error,results){
                     if (error) throw error;
                     
@@ -128,6 +131,14 @@ app.post('/tlogin', function(request, response) {
 app.get('/afterreg', function(request, response) {
 	// Render login template
 	response.sendFile(path.join(__dirname + '/afterreg.html'));
+});
+app.get('/passnotmatched', function(request, response) {
+	// Render login template
+	response.sendFile(path.join(__dirname + '/passnotmatched.html'));
+});
+app.get('/alreadyexists', function(request, response) {
+	// Render login template
+	response.sendFile(path.join(__dirname + '/alreadyexists.html'));
 });
 
 // http://localhost:3000/tauth
@@ -274,7 +285,7 @@ app.post('/filled', function(request, response) {
 		date: date,
 		
 	  }
-	var sql = 'INSERT INTO details1 SET ?';
+	var sql = 'INSERT INTO gatepass SET ?';
 	connection.query(sql,details, function(error,results){
 		if (error) throw error;
 		console.log("entered in db");
@@ -285,7 +296,7 @@ app.post('/update', function(request, response) {
 	// Render login template
 	var auto = request.body.accepting;
     //var location = document.location;
-	var sql = 'UPDATE details1 SET status = ? where auto = ?'
+	var sql = 'UPDATE gatepass SET status = ? where auto = ?'
 	connection.query(sql,['hod',auto], function(error,results){
 		if (error) throw error;
 		else{
@@ -301,7 +312,7 @@ app.post('/tdecline', function(request, response) {
 	// Render login template
 	var auto = request.body.declining;
     //var location = document.location;
-	var sql = 'UPDATE details1 SET status = ? where auto = ?'
+	var sql = 'UPDATE gatepass SET status = ? where auto = ?'
 	connection.query(sql,['declined from teacher',auto], function(error,results){
 		if (error) throw error;
 		else{
@@ -318,7 +329,7 @@ app.post('/hdecline', function(request, response) {
 	// Render login template
 	var auto = request.body.declining;
     //var location = document.location;
-	var sql = 'UPDATE details1 SET status = ? where auto = ?'
+	var sql = 'UPDATE gatepass SET status = ? where auto = ?'
 	connection.query(sql,['declined from hod',auto], function(error,results){
 		if (error) throw error;
 		else{
@@ -337,7 +348,7 @@ app.post('/status', function(request, response) {
 	//response.sendFile(path.join(__dirname + '/status.html'));
 	var un = request.session.username;
 	console.log('status',un);
-	connection.query('SELECT * FROM details1 where roll=?',[un],function(err,rows)     {
+	connection.query('SELECT * FROM gatepass where roll=?',[un],function(err,rows)     {
  
         if(err){
          request.flash('error', err); 
@@ -354,7 +365,7 @@ app.post('/status', function(request, response) {
 app.get('/thome', function(request, response) {
 	// Render login template
 	//response.sendFile(path.join(__dirname + '/mainTea.html'));
-	connection.query('SELECT * FROM details1 where status is null',function(err,rows)     {
+	connection.query('SELECT * FROM gatepass where status is null',function(err,rows)     {
  
         if(err){
          request.flash('error', err); 
@@ -373,7 +384,7 @@ app.get('/hhome', function(request, response) {
 	// Render login template
 	//response.sendFile(path.join(__dirname + '/mainhod.html'));
 	var val = 'hod';
-	connection.query('SELECT * FROM details1 where status = ?',[val],function(err,rows)     {
+	connection.query('SELECT * FROM gatepass where status = ?',[val],function(err,rows)     {
  
         if(err){
          request.flash('error', err); 
@@ -390,7 +401,7 @@ app.post('/updatehod', function(request, response) {
 	// Render login template
 	var auto = request.body.accepting;
     //var location = document.location;
-	var sql = 'UPDATE details1 SET status = ? where auto = ?'
+	var sql = 'UPDATE gatepass SET status = ? where auto = ?'
 	connection.query(sql,['gate',auto], function(error,results){
 		if (error) throw error;
 		else{
@@ -408,7 +419,7 @@ app.get('/ghome', function(request, response) {
 	// Render login template
 	//response.sendFile(path.join(__dirname + '/maingate.html'));
 	var val = 'gate';
-	connection.query('SELECT * FROM details1 where status = ?',[val],function(err,rows)     {
+	connection.query('SELECT * FROM gatepass where status = ?',[val],function(err,rows)     {
  
         if(err){
          request.flash('error', err); 
@@ -425,7 +436,7 @@ app.post('/updategate', function(request, response) {
 	// Render login template
 	var auto = request.body.out;
     //var location = document.location;
-	var sql = 'UPDATE details1 SET status = ?, outtime = CURRENT_TIMESTAMP where auto = ?'
+	var sql = 'UPDATE gatepass SET status = ?, outtime = CURRENT_TIMESTAMP where auto = ?'
 	connection.query(sql,['issuefinish',auto], function(error,results){
 		if (error) throw error;
 		else{

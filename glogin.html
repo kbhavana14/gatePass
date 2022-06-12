@@ -1,29 +1,34 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width,minimum-scale=1">
-		<title>Login</title>
-        <!-- the form awesome library is used to add icons to our form -->
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-        <!-- include the stylesheet file -->
-        <link href="styles.css" rel="stylesheet" type="text/css">
-	</head>
-	<body>
-		<div class="login">
-			<h1>GATEKEEPER Login</h1>
-			<form action="/gauth" method="post">
-				<label for="username">
-					<!-- font awesome icon -->
-					<i class="fas fa-user"></i>
-				</label>
-				<input type="text" name="username" placeholder="Username" id="username" required>
-				<label for="password">
-					<i class="fas fa-lock"></i>
-				</label>
-				<input type="password" name="password" placeholder="Password" id="password" required>
-				<input type="submit" value="Login">
-			</form>
-		</div>
-	</body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+</head>
+<body>
+    <div class="login-box">
+        <h2>GateKeeper Login</h2>
+        <form action="/gauth" method="post">
+          <div class="user-box">
+            <input type="text" name="username" placeholder="Username" id="username" required>
+            <label for="username">Username</label>
+          </div>
+          <div class="user-box">
+            <input type="password" name="password" placeholder="Password" id="password" required>
+            <label for="password">Password</label>
+          </div>
+          <a href="#" class="sub">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <input type="submit" value="Login" class="sub">          
+          </a>
+          
+        </form>
+      </div>
+</body>
 </html>

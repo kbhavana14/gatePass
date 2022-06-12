@@ -1,37 +1,61 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width,minimum-scale=1">
-		<title>index</title>
-        <!-- the form awesome library is used to add icons to our form -->
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-        <!-- include the stylesheet file -->
-        
-	</head>
-	<body>
-		<div class="gatepass">
-			<h1>GATEPASS main page</h1>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="index.css">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+</head>
+<body>
+   <style>
+      @import url('https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Poppins:wght@300;400;700&display=swap');
+  </style>
+   <div class="wrapper">
+      <!-- <div><a href="#">GatSy</a></div> -->
+      <div class="container">
+         <div class="ham"></div>
+         <div class="ham"></div>
+         <div class="ham"></div>
+      </div>
+   </div>
+   <div style="display:flex">
 
-            <form method="post" action="/slogin">
-                <button type="submit">student LOGIN</button>
-            </form>
-            <form method="post" action="/ssignup">
-                <button type="submit">student SIGNUP</button>
-            </form>
+      <ul class="menu">
+      <form method="post" action="/slogin">
+         <li><a href="login.html"><button type="submit"><p>Student Login</p></button></a></li>
+      </form>
 
-			<form method="post" action="/tlogin">
-                <button type="submit">teacher LOGIN</button>
-            </form>
+      <form method="post" action="/ssignup">
+         <li><a href="ssignup.html"><button type="submit"><p>Student SignUp</p></button></a></li>
+      </form>
 
-			<form method="post" action="/hlogin">
-                <button type="submit">hod LOGIN</button>
-            </form>
+      <form method="post" action="/tlogin">
+         <li><a href="tlogin.html"><button type="submit"><p>Class Teacher</p></button></a></li>
+      </form>
+         
+      <form method="post" action="/hlogin">
+         <li><a href="hlogin.html"><button type="submit"><p>HOD</p></button></a></li>
+      </form>
+         
+      <form method="post" action="/glogin">
+         <li><a href="#"><button type="submit"><p>Gate Keeper</p></button></a></li>
+      </form>
+      </ul>
+      <div style="margin-left: 50px; margin-top: 16%;">
+         <h2 class="header">Gate Pass Management System</h2>
+         <h4 style="text-align: center;font-style:normal;font-weight: 200;width: 400px;margin-left: 20%;">User friendly application for issuing gate passes. Click the hamburger icon to login to our application.</h4>
+      </div>
+   </div>
+   <script>
+      var logo=document.querySelector('.container');
+var menu = document.querySelector('.menu');
 
-			<form method="post" action="/glogin">
-                <button type="submit">gatekeeper LOGIN</button>
-            </form>
+logo.addEventListener('click',function(){
+  menu.classList.toggle('showmenu');
+});
 
-		</div>
-	</body>
+   </script>
+</body>
 </html>

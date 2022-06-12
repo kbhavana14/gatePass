@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins";
+    box-sizing: border-box;
+}
+
+body{
+    background: linear-gradient(45deg,#D7E2E9,#AB95B1,#C9BEB5,#F1D05D);
+}
+
+.header{
+    font-size: 42px;
+    margin-bottom: 3%;
+}
+
+a{
+    text-decoration: none;
+    color: #020202;
+    font-size: 30px;
+}
+
+.wrapper{
+    width: 95%;
+    margin: 0 auto;
+    /* margin-top: 25px; */
+}
+
+.container{
+    margin-top: 25px;
+    float: right;
+    height: 25px;
+    width: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.ham{
+    height: 3px;
+    width: 30px;
+    background-color: black;
+}
+
+.menu{
+    width: 50%;
+    height: 100vh;
+    background-color:#020202;
+    padding: 50px;
+    transform: translateX(-500px);
+    transition: 0.5s;
+}
+
+.showmenu{
+    transform: translateX(0);
+}
+
+.menu li{
+    list-style-type: none;
+    border-bottom: 1px solid gray;
+    padding: 25px 0;
+    text-align: center;
+}
+
+.menu li:last-child{
+    border-bottom: none;
+}
+
+.menu li:first-child{
+    font-weight: bold;
+}
+
+.menu li button{
+    border: 0px;
+    color: snow;
+    background-color: #020202;
+    text-decoration: none;
+    font-size: 20px;
+    transition: font-weight 0.2s;
+}
+
+.menu p:hover{
+    font-weight: bold;
+}
+
+@media screen and (min-width:1000px){
+    .menu{
+        width: 400px;
+    } 
+}
+
+@media screen and (max-width:600px){
+    .menu li a{
+        font-size:16px;
+    }
+}
+
+
