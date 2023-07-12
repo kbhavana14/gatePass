@@ -1,5 +1,5 @@
 # gatePass
- Develop an application for gate pass issue mechanism at CBIT
+ Developed an application for gate pass issue mechanism at CBIT
  
  ![image](https://user-images.githubusercontent.com/92909904/173243833-21173ca4-e82f-43a6-a918-f28060d63288.png)
  ![image](https://user-images.githubusercontent.com/92909904/173243873-8e3362e8-b089-4dd5-8214-19d754ce4ef0.png)
